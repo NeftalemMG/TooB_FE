@@ -235,13 +235,28 @@ const Home = () => {
                     className="absolute inset-0 w-full h-full object-cover"
                   />
                   <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
-                    <div className="text-center text-white px-4">
+                    {/* <div className="text-center text-white px-4">
                       <h1 className="text-3xl md:text-5xl lg:text-7xl font-bold mb-4 md:mb-6 tracking-tighter">{slide.title}</h1>
                       <p className="text-lg md:text-xl lg:text-2xl mb-6 md:mb-10">{slide.subtitle}</p>
                       <Button 
                         size="lg" 
                         onClick={() => navigate('/collections')} 
                         className="bg-white text-gray-900 hover:bg-gray-100 transition-colors duration-300 text-sm md:text-lg px-6 md:px-10 py-2 md:py-4 rounded-full shadow-lg"
+                      >
+                        Explore Collection
+                      </Button>
+                    </div> */}
+                    <div className="text-center text-white px-4">
+                      <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-2 md:mb-4 tracking-tighter">
+                        {slide.title}
+                      </h1>
+                      <p className="text-base md:text-lg lg:text-xl mb-4 md:mb-6">
+                        {slide.subtitle}
+                      </p>
+                      <Button 
+                        size="lg" 
+                        onClick={() => navigate('/collections')} 
+                        className="bg-white text-gray-900 hover:bg-gray-100 transition-colors duration-300 text-sm md:text-base px-4 md:px-8 py-2 md:py-3 rounded-full shadow-lg"
                       >
                         Explore Collection
                       </Button>
@@ -254,9 +269,12 @@ const Home = () => {
         </section>
 
         {/* Featured Products Section */}
-        <section className="py-12 md:py-20 bg-white bg-opacity-90">
+        <section className="py-8 md:py-16 bg-white bg-opacity-90">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-center mb-8 md:mb-16 text-indigo-900">Featured Products</h2>
+            <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-center mb-6 md:mb-12 text-indigo-900">
+              Featured Products
+            </h2>
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {featuredProducts.map((product) => (
                 <motion.div
