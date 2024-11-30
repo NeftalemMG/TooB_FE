@@ -1,29 +1,20 @@
-/* @tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-} */
-
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @import './styles/overrides.css';
 
+:root {
+  --vh: 1vh;
+  --vw: 1vw;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  font-size: 16px; /* Base font size */
+  height: 100%;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -31,7 +22,18 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size: 16px; /* Base font size */
+  width: 100%;
+  min-height: 100vh;
+  min-height: calc(var(--vh, 1vh) * 100);
+  overflow-x: hidden;
+  zoom: 1;
+  /* Remove the font-size declaration here since we moved it to html */
+}
+
+/* Reset some base sizes */
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+  padding: 0;
 }
 
 code {
@@ -39,8 +41,44 @@ code {
     monospace;
 }
 
-/* Reset some base sizes */
-h1, h2, h3, h4, h5, h6, p {
-  margin: 0;
-  padding: 0;
+/* Screen size adjustments */
+@media screen and (min-width: 1024px) {
+  html {
+    font-size: 16px; /* Keep base size for desktop */
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  html {
+    font-size: 15px; /* Slightly smaller for tablets */
+  }
+}
+
+@media screen and (max-width: 767px) {
+  html {
+    font-size: 14px; /* Even smaller for mobile */
+  }
+}
+
+/* Prevent iOS font scaling */
+@supports (-webkit-touch-callout: none) {
+  body {
+    text-size-adjust: none;
+    -webkit-text-size-adjust: none;
+  }
+}
+
+/* Fix for mobile browsers address bar */
+@supports (-webkit-touch-callout: none) {
+  .min-h-screen {
+    min-height: -webkit-fill-available;
+  }
+}
+
+/* Ensure proper scaling on high DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  html {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+  }
 }

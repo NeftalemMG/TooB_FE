@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { CartProvider } from './contexts/CartContext';
 import { WishlistProvider } from './contexts/WishlistContext';
@@ -19,6 +19,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 import AdminRoute from './components/AdminRoute';
 import Payment from './pages/Payment';
 import OrderHistory from './pages/OrderHistory';
+import { setViewportSize } from './utils/viewport';
 
 // Import Admin Components
 import AdminDashboard from './pages/AdminDashboard';
@@ -27,6 +28,20 @@ import UserManagement from './pages/AdminDashboard/UserManagement';
 import OrderManagement from './pages/AdminDashboard/OrderManagement';
 
 const App = () => {
+  useEffect(() => {
+    // Set initial viewport size
+    setViewportSize();
+
+    // Update viewport size on window resize
+    window.addEventListener('resize', setViewportSize);
+    window.addEventListener('orientationchange', setViewportSize);
+
+    // Cleanup function
+    return () => {
+      window.removeEventListener('resize', setViewportSize);
+      window.removeEventListener('orientationchange', setViewportSize);
+    };
+  }, []); 
   return (
     <AuthProvider>
       <CartProvider>
