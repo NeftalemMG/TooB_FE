@@ -24,6 +24,7 @@
     "styled-components": "^6.1.13",
     "swiper": "^11.1.14",
     "tslib": "^2.7.0",
+    "typescript": "^4.9.5",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -51,9 +52,25 @@
     ]
   },
   "devDependencies": {
+    "@babel/core": "^7.26.0",
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@babel/preset-env": "^7.26.0",
+    "@badeball/cypress-cucumber-preprocessor": "^15.1.5",
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.0",
+    "@cypress/browserify-preprocessor": "^3.0.2",
+    "@cypress/webpack-preprocessor": "^5.17.1",
     "autoprefixer": "^10.4.20",
+    "cypress": "^12.17.4",
+    "esbuild": "^0.18.0",
     "postcss": "^8.4.47",
-    "tailwindcss": "^3.4.13"
+    "tailwindcss": "^3.4.13",
+    "webpack": "^5.75.0"
+  },
+  "cypress-cucumber-preprocessor": {
+    "stepDefinitions": [
+      "cypress/e2e/step_definitions/*.js",
+      "cypress/e2e/step_definitions/**/*.js"
+    ],
+    "nonGlobalStepDefinitions": false
   }
 }
